@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cted37xje4yre"]
+
+[ext_resource type="Texture2D" uid="uid://d1fsswsrwd0f1" path="res://Assets/Player/BlackW_idle.png" id="1_ytnb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j2xx"]
+size = Vector2(22, 48)
+
+[node name="Player" type="CharacterBody2D" unique_id=480751527]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=561569198]
+texture = ExtResource("1_ytnb3")
+hframes = 2
+vframes = 4
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1812887672]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_8j2xx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1123711669]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1649030592]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1746956128]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=528263785]
