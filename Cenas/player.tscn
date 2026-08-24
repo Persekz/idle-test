@@ -606,7 +606,7 @@ _data = {
 &"SlashRight": SubResource("Animation_3irby")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=480751527]
+[node name="Warrior" type="CharacterBody2D" unique_id=480751527]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=561569198]
 texture = ExtResource("1_5p0qj")
