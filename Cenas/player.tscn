@@ -767,7 +767,7 @@ _data = {
 &"SlashRight": SubResource("Animation_3irby")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=480751527]
+[node name="Player" type="CharacterBody2D" unique_id=480751527 groups=["player"]]
 script = ExtResource("1_yuqgu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=561569198]
