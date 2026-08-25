@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blgcaa0rp1q5o" path="res://Assets/Player/BlackW_slash.png" id="1_5p0qj"]
 [ext_resource type="Texture2D" uid="uid://d1fsswsrwd0f1" path="res://Assets/Player/BlackW_idle.png" id="1_ytnb3"]
+[ext_resource type="Script" uid="uid://cm1ot61paeuir" path="res://Scripts/player.gd" id="1_yuqgu"]
 [ext_resource type="Texture2D" uid="uid://s4gh3dkbsd8i" path="res://Assets/Player/BlackW_hurt.png" id="2_yuqgu"]
 [ext_resource type="Texture2D" uid="uid://blifeb12baoe8" path="res://Assets/Player/BlackW_walk.png" id="4_jx05c"]
 
@@ -372,7 +373,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8gyg"]
-size = Vector2(94, 37)
+size = Vector2(113, 43)
 
 [sub_resource type="Animation" id="Animation_5p0qj"]
 length = 0.001
@@ -436,6 +437,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AreaAttack/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.5, -17.5)]
+}
 
 [sub_resource type="Animation" id="Animation_uojvw"]
 resource_name = "SlashBack"
@@ -492,14 +505,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AreaAttack/CollisionShape2D:disabled")
+tracks/4/path = NodePath("AreaAttack/CollisionShape2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(11, -16.9375), Vector2(11, -16.9375)]
+"values": [Vector2(5.5, -17.5), Vector2(5.5, -17.5)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -755,8 +768,10 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=480751527]
+script = ExtResource("1_yuqgu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=561569198]
+visible = false
 texture = ExtResource("1_5p0qj")
 hframes = 5
 vframes = 4
@@ -767,17 +782,17 @@ position = Vector2(3, 5.5)
 shape = SubResource("RectangleShape2D_8j2xx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1123711669]
-visible = false
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_pmvhq")
-animation = &"IdleFront"
+animation = &"Die"
 
 [node name="AreaAttack" type="Area2D" parent="." unique_id=1649030592]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack" unique_id=1746956128]
-position = Vector2(15, -14.5)
+position = Vector2(5.5, -17.5)
 shape = SubResource("RectangleShape2D_o8gyg")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=528263785]
 libraries/ = SubResource("AnimationLibrary_kbfte")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
