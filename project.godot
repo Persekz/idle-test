@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="IdleTest"
+run/main_scene="uid://cted37xje4yre"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
